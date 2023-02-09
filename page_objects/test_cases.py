@@ -9,6 +9,7 @@ class TestCases:
 
     def delete_test_by_name(self, test_name: str):
         self.page.click("//tbody/descendant::tr[12]/descendant::td[9]")
+        self.page.wait_for_timeout(300)
 
     def check_columns_hidden(self):
         description = self.page.is_hidden('.thDes')
