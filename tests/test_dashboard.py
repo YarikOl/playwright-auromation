@@ -1,5 +1,7 @@
+from pytest import mark
 import json
 
+@mark.test_id(276)
 def test_dashboard_data(desktop_app_auth):
     payload = json.dumps({"total": 0, "passed": 0, "failed": 0, "norun": 0})
     desktop_app_auth.intercept_requests('**/getstat*', payload)
@@ -7,6 +9,7 @@ def test_dashboard_data(desktop_app_auth):
     desktop_app_auth.stop_intercept('**/getstat*')
     assert desktop_app_auth.get_total_tests_stats() == '0'
 
+@mark.test_id(277)
 def test_multiple_roles(desktop_app_auth, desktop_app_bob, get_db):
     alice = desktop_app_auth
     bob = desktop_app_bob
